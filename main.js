@@ -94,10 +94,16 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (isAndroid) {
                 const startDate = new Date("2026-07-03T17:00:00").getTime();
                 const endDate = new Date("2026-07-04T02:00:00").getTime();
-                const androidIntent = `intent://#Intent;action=android.intent.action.INSERT;mimetype=vnd.android.cursor.item/event;S.title=Mis%20XV%20A%C3%B1os%20%7C%20Andrea;S.description=%C2%A1Te%20invito%20a%20celebrar%20mis%20XV%20a%C3%B1os!%20No%20faltes.;S.eventLocation=Iglesia%20Capilla%20de%20Guadalupe%20/%20Sal%C3%B3n%20Millan;l.beginTime=${startDate};l.endTime=${endDate};end`;
-                window.location.href = androidIntent;
+                const fallbackUrl = encodeURIComponent("https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+Años+|+Andrea&dates=20260703T170000/20260704T020000&ctz=America/Matamoros&details=¡Te+invito+a+celebrar+mis+XV+años!+No+faltes.&location=Iglesia+Capilla+de+Guadalupe+/+Salón+Millan");
+                const androidIntent = `intent://#Intent;action=android.intent.action.INSERT;mimetype=vnd.android.cursor.item/event;S.title=Mis%20XV%20A%C3%B1os%20%7C%20Andrea;S.description=%C2%A1Te%20invito%20a%20celebrar%20mis%20XV%20a%C3%B1os!%20No%20faltes.;S.eventLocation=Iglesia%20Capilla%20de%20Guadalupe%20/%20Sal%C3%B3n%20Millan;l.beginTime=${startDate};l.endTime=${endDate};S.browser_fallback_url=${fallbackUrl};end`;
+                
+                const link = document.createElement('a');
+                link.href = androidIntent;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
             } else {
-                const urlGoogle = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+A%C3%B1os+%7C+Andrea&dates=20260703T170000/20260704T020000&ctz=America/Monterrey&details=%C2%A1Te+invito+a+celebrar+mis+XV+a%C3%B1os!+No+faltes.&location=Iglesia+Capilla+de+Guadalupe+/+Sal%C3%B3n+Millan";
+                const urlGoogle = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+A%C3%B1os+%7C+Andrea&dates=20260703T170000/20260704T020000&ctz=America/Matamoros&details=%C2%A1Te+invito+a+celebrar+mis+XV+a%C3%B1os!+No+faltes.&location=Iglesia+Capilla+de+Guadalupe+/+Sal%C3%B3n+Millan";
                 window.open(urlGoogle, '_blank');
             }
         });
