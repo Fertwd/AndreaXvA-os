@@ -75,13 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const btnCalendario = document.querySelector('.btn-calendario');
     if (btnCalendario) {
-        btnCalendario.addEventListener('click', (e) => {
-            e.preventDefault();
-            const ua = navigator.userAgent;
-            const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-            const isAndroid = /Android/.test(ua);
+        const ua = navigator.userAgent;
+        const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-            if (isIOS) {
+        if (isIOS) {
+            btnCalendario.addEventListener('click', (e) => {
+                e.preventDefault();
                 const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:Mis XV Años | Andrea\nDTSTART:20260703T170000\nDTEND:20260704T020000\nDESCRIPTION:¡Te invito a celebrar mis XV años! No faltes.\nLOCATION:Iglesia Capilla de Guadalupe / Salón Millan\nEND:VEVENT\nEND:VCALENDAR`;
                 const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
                 const url = window.URL.createObjectURL(blob);
@@ -91,22 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-            } else if (isAndroid) {
-                const startDate = new Date("2026-07-03T17:00:00").getTime();
-                const endDate = new Date("2026-07-04T02:00:00").getTime();
-                const fallbackUrl = encodeURIComponent("https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+Años+|+Andrea&dates=20260703T170000/20260704T020000&ctz=America/Matamoros&details=¡Te+invito+a+celebrar+mis+XV+años!+No+faltes.&location=Iglesia+Capilla+de+Guadalupe+/+Salón+Millan");
-                const androidIntent = `intent://#Intent;action=android.intent.action.INSERT;mimetype=vnd.android.cursor.item/event;S.title=Mis%20XV%20A%C3%B1os%20%7C%20Andrea;S.description=%C2%A1Te%20invito%20a%20celebrar%20mis%20XV%20a%C3%B1os!%20No%20faltes.;S.eventLocation=Iglesia%20Capilla%20de%20Guadalupe%20/%20Sal%C3%B3n%20Millan;l.beginTime=${startDate};l.endTime=${endDate};S.browser_fallback_url=${fallbackUrl};end`;
-                
-                const link = document.createElement('a');
-                link.href = androidIntent;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } else {
-                const urlGoogle = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+A%C3%B1os+%7C+Andrea&dates=20260703T170000/20260704T020000&ctz=America/Matamoros&details=%C2%A1Te+invito+a+celebrar+mis+XV+a%C3%B1os!+No+faltes.&location=Iglesia+Capilla+de+Guadalupe+/+Sal%C3%B3n+Millan";
-                window.open(urlGoogle, '_blank');
-            }
-        });
+            });
+        } else {
+            const urlGoogle = "https://calendar.google.com/calendar/r/eventedit?action=TEMPLATE&text=Mis+XV+A%C3%B1os+%7C+Andrea&dates=20260703T170000/20260704T020000&ctz=America/Matamoros&details=%C2%A1Te+invito+a+celebrar+mis+XV+a%C3%B1os!+No+faltes.&location=Iglesia+Capilla+de+Guadalupe+/+Sal%C3%B3n+Millan";
+            btnCalendario.href = urlGoogle;
+            btnCalendario.target = "_blank";
+        }
     }
 
     const btnSubir = document.getElementById('btn-subir');
