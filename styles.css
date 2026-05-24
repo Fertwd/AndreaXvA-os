@@ -12,7 +12,7 @@
 
 html, body {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     overflow-x: hidden;
     background-color: var(--fondo-principal);
 }
@@ -255,19 +255,19 @@ html, body {
     right: 25px;
     width: 45px;
     height: 45px;
-    background-color: var(--dorado-suave);
-    border: 1.5px solid var(--dorado);
+    background-color: rgba(195, 159, 87, 0.15); /* Fondo dorado transparente */
+    border: 1.5px solid #C39F57; /* Borde dorado */
     border-radius: 50%;
-    color: var(--dorado);
+    color: #C39F57; /* Flecha dorada */
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 100;
+    z-index: 9999; /* Por si otra imagen lo estaba tapando */
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s, transform 0.2s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .btn-subir.mostrar {
