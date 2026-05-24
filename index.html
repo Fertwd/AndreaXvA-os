@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mis XV Años | Andrea</title>
+    
+    <meta property="og:title" content="Mis XV Años | Andrea">
+    <meta property="og:description" content="¡Te invito a celebrar mis XV años!">
+    <meta property="og:image" content="img/banner.png">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <audio id="audio-sello" src="audio/sonido.mp3"></audio>
+
+    <div id="pantalla-entrada" class="pantalla-entrada">
+        <div class="puerta puerta-izq"><img src="img/entrada/izquierda.png"></div>
+        <div class="puerta puerta-der"><img src="img/entrada/derecha.png"></div>
+        <div class="contenedor-sello">
+            <img src="img/entrada/sello.png" id="boton-sello" class="sello">
+        </div>
+    </div>
+
+    <main id="contenido-invitacion" class="contenido-invitacion">
+        
+        <div class="seccion-img">
+            <img src="img/fondos/fondo1.jpg" class="img-base">
+            <div class="reproductor-overlay">
+                <audio id="audio-fondo" src="audio/cancion.mp3"></audio>
+                <input type="range" id="barra-progreso" value="0" min="0" max="100">
+                <div class="controles-musica">
+                    <button id="btn-retroceder"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/></svg></button>
+                    <button id="btn-play-pause">
+                        <svg id="icono-play" viewBox="0 0 24 24" width="36" height="36"><path d="M8 5v14l11-7z"/></svg>
+                        <svg id="icono-pause" viewBox="0 0 24 24" width="36" height="36" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                    </button>
+                    <button id="btn-adelantar"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></svg></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="seccion-img">
+            <img src="img/fondos/fondo2.jpg" class="img-base">
+            
+            <div class="contador-barra">
+                <span id="dias">00</span> Días | <span id="horas">00</span> Hrs | <span id="minutos">00</span> Min | <span id="segundos">00</span> Seg
+            </div>
+
+            <a href="#" class="btn-css btn-calendario">✦ Agregar a mi calendario ✦</a>
+            <a href="#" target="_blank" class="btn-css btn-ubicacion-1">❦ Ver ubicación ❦</a>
+            <a href="#" target="_blank" class="btn-css btn-ubicacion-2">❦ Ver ubicación ❦</a>
+        </div>
+
+        <div class="seccion-img">
+            <img src="img/fondos/fondo3.jpg" class="img-base">
+        </div>
+
+        <div class="seccion-img">
+            <img src="img/fondos/fondo4.jpg" class="img-base">
+            <a href="https://wa.me/528979713312" target="_blank" class="btn-css btn-confirmar">❦ Confirmar asistencia ❦</a>
+            <a href="#" class="btn-css btn-fotos">✦ Subir fotos aquí ✦</a>
+        </div>
+
+        <button id="btn-subir" class="btn-subir">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 4l8 8h-6v8h-4v-8H4l8-8z"/></svg>
+        </button>
+
+    </main>
+    <script src="main.js"></script>
+</body>
+</html>
