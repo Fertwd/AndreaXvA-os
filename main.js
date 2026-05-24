@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const fechaMeta = new Date("Jul 03, 2026 17:00:00-05:00").getTime();
+    const fechaMeta = new Date("Jul 03, 2026 17:00:00-06:00").getTime();
     const actualizarContador = setInterval(() => {
         const ahora = new Date().getTime();
         const dist = fechaMeta - ahora;
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isIOS) {
             btnCalendario.addEventListener('click', (e) => {
                 e.preventDefault();
-                const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:Mis XV Años | Andrea\nDTSTART:20260703T220000Z\nDTEND:20260704T070000Z\nDESCRIPTION:¡Te invito a celebrar mis XV años! No faltes.\nLOCATION:Iglesia Capilla de Guadalupe / Salón Millan\nEND:VEVENT\nEND:VCALENDAR`;
+                const icsContent = `BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nSUMMARY:Mis XV Años | Andrea\r\nDTSTART:20260703T230000Z\r\nDTEND:20260704T080000Z\r\nDESCRIPTION:¡Te invito a celebrar mis XV años! No faltes.\r\nLOCATION:Iglesia Capilla de Guadalupe / Salón Millan\r\nBEGIN:VALARM\r\nTRIGGER:-PT1H\r\nACTION:DISPLAY\r\nDESCRIPTION:Recordatorio de Mis XV Andrea\r\nEND:VALARM\r\nEND:VEVENT\r\nEND:VCALENDAR`;
                 const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
                 const url = window.URL.createObjectURL(blob);
                 const link = document.createElement('a');
@@ -93,14 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.removeChild(link);
             });
         } else if (isAndroid) {
-            const startMs = new Date("2026-07-03T17:00:00-05:00").getTime();
-            const endMs = new Date("2026-07-04T02:00:00-05:00").getTime();
-            const webUrl = encodeURIComponent("https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+Años+|+Andrea&dates=20260703T220000Z/20260704T070000Z&details=¡Te+invito+a+celebrar+mis+XV+años!+No+faltes.&location=Iglesia+Capilla+de+Guadalupe+/+Salón+Millan");
+            const startMs = new Date("2026-07-03T17:00:00-06:00").getTime();
+            const endMs = new Date("2026-07-04T02:00:00-06:00").getTime();
+            const webUrl = encodeURIComponent("https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+Años+|+Andrea&dates=20260703T230000Z/20260704T080000Z&details=¡Te+invito+a+celebrar+mis+XV+años!+No+faltes.&location=Iglesia+Capilla+de+Guadalupe+/+Salón+Millan");
             const androidIntent = `intent://#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/event;S.title=Mis%20XV%20A%C3%B1os%20%7C%20Andrea;S.description=%C2%A1Te%20invito%20a%20celebrar%20mis%20XV%20a%C3%B1os!%20No%20faltes.;S.eventLocation=Iglesia%20Capilla%20de%20Guadalupe%20/%20Sal%C3%B3n%20Millan;l.beginTime=${startMs};l.endTime=${endMs};S.browser_fallback_url=${webUrl};end`;
             
             btnCalendario.href = androidIntent;
         } else {
-            const urlGoogle = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+A%C3%B1os+%7C+Andrea&dates=20260703T220000Z/20260704T070000Z&details=%C2%A1Te+invito+a+celebrar+mis+XV+a%C3%B1os!+No+faltes.&location=Iglesia+Capilla+de+Guadalupe+/+Sal%C3%B3n+Millan";
+            const urlGoogle = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+A%C3%B1os+%7C+Andrea&dates=20260703T230000Z/20260704T080000Z&details=%C2%A1Te+invito+a+celebrar+mis+XV+a%C3%B1os!+No+faltes.&location=Iglesia+Capilla+de+Guadalupe+/+Sal%C3%B3n+Millan";
             btnCalendario.href = urlGoogle;
             btnCalendario.target = "_blank";
         }
