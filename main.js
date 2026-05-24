@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const botonSello = document.getElementById('boton-sello');
     if (botonSello) {
         botonSello.addEventListener('click', () => {
+            document.getElementById('audio-sello').play().catch(() => {});
             document.querySelector('.contenedor-sello').classList.add('oculto');
             setTimeout(() => {
                 document.querySelector('.puerta-izq').classList.add('abierta');
@@ -76,21 +77,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnCalendario) {
         btnCalendario.addEventListener('click', (e) => {
             e.preventDefault();
-            const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:Mis XV Años | Andrea\nDTSTART:20260703T170000\nDTEND:20260704T020000\nDESCRIPTION:¡Te invito a celebrar mis XV años! No faltes.\nLOCATION:Iglesia Capilla de Guadalupe / Salón Millan\nEND:VEVENT\nEND:VCALENDAR`;
-            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', 'Mis_XV_Andrea.ics');
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+            if (isIOS) {
+                const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:Mis XV Años | Andrea\nDTSTART:20260703T170000\nDTEND:20260704T020000\nDESCRIPTION:¡Te invito a celebrar mis XV años! No faltes.\nLOCATION:Iglesia Capilla de Guadalupe / Salón Millan\nEND:VEVENT\nEND:VCALENDAR`;
+                const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'Mis_XV_Andrea.ics');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                const urlGoogle = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+A%C3%B1os+%7C+Andrea&dates=20260703T170000/20260704T020000&ctz=America/Monterrey&details=%C2%A1Te+invito+a+celebrar+mis+XV+a%C3%B1os!+No+faltes.&location=Iglesia+Capilla+de+Guadalupe+/+Sal%C3%B3n+Millan";
+                window.open(urlGoogle, '_blank');
+            }
         });
     }
-});
 
-const btnSubir = document.getElementById('btn-subir');
-    
+    const btnSubir = document.getElementById('btn-subir');
     if (btnSubir) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
@@ -107,3 +113,4 @@ const btnSubir = document.getElementById('btn-subir');
             });
         });
     }
+});
