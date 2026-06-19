@@ -122,7 +122,7 @@ html, body {
 
 .reproductor-overlay {
     position: absolute;
-    top: 35%;
+    top: 25%;
     left: 50%;
     transform: translateX(-50%);
     width: 65%;
@@ -164,7 +164,7 @@ html, body {
     background: none;
     border: none;
     cursor: pointer;
-    color: #D9006C;
+    color: #ff57b2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -176,7 +176,7 @@ html, body {
 
 .contador-barra {
     position: absolute;
-    top: 8.3%;
+    top: -4.5%;
     left: 0;
     width: 100%;
     text-align: center;
@@ -205,20 +205,20 @@ html, body {
 }
 
 .btn-calendario {
-    top: 49.3%;
+    top: 36.6%;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .btn-ubicacion-1 {
-    top: 78%;
-    left: 63%;
+    top: 64.5%;
+    left: 70%;
     transform: translateX(-50%);
 }
 
 .btn-ubicacion-2 {
-    top: 92%;
-    left: 36%;
+    top: 77.5%;
+    left: 30%;
     transform: translateX(-50%);
 }
 
@@ -229,7 +229,7 @@ html, body {
 }
 
 .btn-fotos {
-    top:90%;
+    top:74.3%;
     left: 50%;
     transform: translateX(-50%);
 }
